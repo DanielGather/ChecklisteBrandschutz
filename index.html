@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brandschutz-Checkliste</title>
+    <meta
+      name="description"
+      content="Einfache Brandschutz-Checkliste mit Ja/Nein, Begründungs-Popup bei Nein und Berichts-Export."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Brandschutz-Checkliste</h1>
+      <p class="subtitle">Begehung dokumentieren, Mängel begründen, Bericht erzeugen</p>
+    </header>
+
+    <main class="container">
+      <form id="checklistForm" novalidate>
+        <div id="app" class="sections"></div>
+
+        <div class="toolbar">
+          <button type="button" id="generateReport" class="btn primary">Bericht erstellen</button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Modal: Begründung bei "Nein" -->
+    <div id="reasonModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="reasonModalTitle">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-content" role="document">
+        <div class="modal-header">
+          <h2 id="reasonModalTitle">Begründung / Maßnahme</h2>
+        </div>
+        <div class="modal-body">
+          <div class="modal-item-label" id="modalItemLabel"></div>
+          <label for="reasonText" class="sr-only">Begründung / Maßnahmen</label>
+          <textarea
+            id="reasonText"
+            rows="6"
+            placeholder="Warum ist der Punkt nicht in Ordnung? Welche Maßnahme ist geplant?"
+            required
+          ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelReason" class="btn">Abbrechen</button>
+          <button type="button" id="saveReason" class="btn primary">Speichern</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <small>Stand: <span id="today"></span></small>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
